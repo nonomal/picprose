@@ -1,0 +1,88 @@
+{
+  "name": "heazy-svg-generator",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@chakra-ui/icons": "^1.1.7",
+    "@chakra-ui/react": "2.0.0-next.0",
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@graphql-codegen/cli": "^2.6.2",
+    "@graphql-codegen/typescript": "^2.4.11",
+    "@graphql-codegen/typescript-operations": "^2.4.0",
+    "@graphql-codegen/typescript-react-query": "^3.5.12",
+    "@iconscout/react-unicons": "^1.1.6",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.1.1",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/firebase": "^3.2.1",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^16.11.29",
+    "@types/react": "^18.0.7",
+    "@types/react-dom": "^18.0.0",
+    "@uiball/loaders": "^1.2.6",
+    "buffer": "^6.0.3",
+    "firebase": "^9.8.2",
+    "framer-motion": "^6.3.3",
+    "graphql": "^16.5.0",
+    "hex-rgb": "^5.0.0",
+    "react": "^18.0.0",
+    "react-color": "^2.19.3",
+    "react-dom": "^18.0.0",
+    "react-github-btn": "^1.3.0",
+    "react-query": "^3.39.1",
+    "react-scripts": "^5.0.0",
+    "rgb-hex": "^4.0.0",
+    "save": "^2.5.0",
+    "typescript": "^4.6.3",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start:app": "react-scripts start",
+    "start:server": "npm run --prefix ./server start",
+    "start:landing-page": "npm run --prefix ./heazy-landing-page dev",
+    "build": "CI=true npm run test && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "generate": "graphql-codegen",
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "lint:app": "eslint . --ignore-pattern \"heazy-landing-page/\" --ignore-pattern \"server/\" --parser-options '{\"project\":\"./tsconfig.json\"}'",
+    "lint:server": "eslint ./server --parser-options '{\"project\":\"./server/tsconfig.json\"}'",
+    "lint:landing": "eslint ./heazy-landing-page --parser-options '{\"project\":\"./heazy-landing-page/tsconfig.json\"}'",
+    "fix-lint:app": "eslint . --fix --ignore-pattern \"heazy-landing-page/\" --ignore-pattern \"server/\" --parser-options '{\"project\":\"./tsconfig.json\"}'",
+    "fix-lint:server": "eslint ./server --parser-options '{\"project\":\"./server/tsconfig.json\"}' --fix",
+    "fix-lint:landing": "eslint ./heazy-landing-page --parser-options '{\"project\":\"./heazy-landing-page/tsconfig.json\"}' --fix",
+    "prepare": "husky install"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^5.0.0-alpha.2",
+    "husky": "^8.0.0",
+    "prettier": "^3.0.0",
+    "source-map-explorer": "^2.5.2",
+    "typescript": "latest"
+  }
+}

@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  firebaseId String   @unique
+  email      String   @unique
+  userName   String
+  avatarUrl  String?
+  designs    Design[]
+  author     Design[] @relation("author")
+
+  @@index([firebaseId])
+}
+
+model Design {
+  id               Int        @id @default(autoincrement())
+  user             User       @relation(fields: [userId], references: [id])
+  userId           Int
+  timesCopied      Int        @default(0)
+  public           Boolean    @default(false)
+  name             String
+  type             DesignType @relation(fields: [typeId], references: [id])
+  typeId           Int
+  thumbnailUrl     String
+  copiedFrom       User?      @relation("author", fields: [copiedFromUserId], references: [id])
+  copiedFromUserId Int?
+  optionParameters Json
+  createdAt        DateTime   @default(now())
+  deleted          Boolean    @default(false)
+}
+
+model DesignType {
+  id     Int      @id @default(autoincrement())
+  name   String   @unique
+  design Design[]
+}
